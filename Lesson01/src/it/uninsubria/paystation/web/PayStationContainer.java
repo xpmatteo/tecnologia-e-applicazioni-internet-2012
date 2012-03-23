@@ -14,7 +14,8 @@ public class PayStationContainer implements Container {
 		try {
 			response.set("Content-Type", "text/html");
 			PrintStream body = response.getPrintStream();
-			body.println("Hello!");
+			PayStationController controller = new PayStationController();
+			body.println(controller.toHtml());
 			body.close();
 		} catch (IOException e) {
 			throw new RuntimeException(e);

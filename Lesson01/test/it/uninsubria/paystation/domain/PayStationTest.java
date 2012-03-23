@@ -48,4 +48,11 @@ public class PayStationTest {
 		Receipt receipt = station.buy();
 		assertEquals(10, receipt.minutes());
 	}
+	
+	@Test
+	public void resetWhenUserPressesCancel() throws Exception {
+		station.addCoin(25);
+		station.cancel();
+		assertEquals(0, station.readDisplay());
+	}
 }

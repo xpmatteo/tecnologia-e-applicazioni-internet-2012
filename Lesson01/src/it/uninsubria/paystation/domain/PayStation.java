@@ -27,4 +27,8 @@ public class PayStation {
 		return totalMoneyInserted / 5 * 2;
 	}
 
+	public void cancel() {
+		totalMoneyInserted = 0;
+	}
+
 }
