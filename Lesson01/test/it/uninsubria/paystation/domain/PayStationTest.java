@@ -1,9 +1,6 @@
 package it.uninsubria.paystation.domain;
 
-import static org.junit.Assert.*;
-import it.uninsubria.paystation.domain.IllegalCoinException;
-import it.uninsubria.paystation.domain.PayStation;
-import it.uninsubria.paystation.domain.Receipt;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;

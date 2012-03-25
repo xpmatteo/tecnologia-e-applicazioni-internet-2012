@@ -1,6 +1,6 @@
 package it.uninsubria.paystation.main;
 
-import it.uninsubria.paystation.web.PayStationContainer;
+import it.uninsubria.paystation.web.HelloWorldContainer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -12,7 +12,7 @@ import org.simpleframework.transport.connect.SocketConnection;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		PayStationContainer container = new PayStationContainer();
+		HelloWorldContainer container = new HelloWorldContainer();
 		Connection connection = new SocketConnection(container);
 		SocketAddress address = new InetSocketAddress(8080);
 		connection.connect(address);
