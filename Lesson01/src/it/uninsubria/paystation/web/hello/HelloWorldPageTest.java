@@ -1,6 +1,8 @@
-package it.uninsubria.paystation.web;
+package it.uninsubria.paystation.web.hello;
 
 import static org.junit.Assert.assertEquals;
+import it.uninsubria.paystation.web.FakeWebRequest;
+import it.uninsubria.paystation.web.FakeWebResponse;
 
 import org.junit.Before;
 import org.junit.Test;

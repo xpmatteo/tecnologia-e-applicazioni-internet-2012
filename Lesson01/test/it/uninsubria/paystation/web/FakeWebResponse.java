@@ -1,5 +1,7 @@
 package it.uninsubria.paystation.web;
 
+import it.uninsubria.paystation.web.WebResponse;
+
 public class FakeWebResponse implements WebResponse {
 
 	private String body;

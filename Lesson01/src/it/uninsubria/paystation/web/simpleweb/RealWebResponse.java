@@ -1,4 +1,6 @@
-package it.uninsubria.paystation.web;
+package it.uninsubria.paystation.web.simpleweb;
+
+import it.uninsubria.paystation.web.WebResponse;
 
 import java.io.IOException;
 import java.io.PrintStream;

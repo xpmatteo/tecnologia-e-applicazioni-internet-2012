@@ -1,4 +1,7 @@
-package it.uninsubria.paystation.web;
+package it.uninsubria.paystation.web.hello;
+
+import it.uninsubria.paystation.web.WebRequest;
+import it.uninsubria.paystation.web.WebResponse;
 
 public class HelloWorldPage {
 
@@ -7,7 +10,8 @@ public class HelloWorldPage {
 		String name = webRequest.getParameter("name");
 		if (name == null) 
 			name = "World";
-		webResponse.setBody("<h1>Hello, World!</h1>");
+		String body = "<h1>Hello, $name!</h1>".replace("$name", name);
+		webResponse.setBody(body);
 	}
 
 }

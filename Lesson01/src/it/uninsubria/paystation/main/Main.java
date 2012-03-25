@@ -1,6 +1,6 @@
 package it.uninsubria.paystation.main;
 
-import it.uninsubria.paystation.web.HelloWorldContainer;
+import it.uninsubria.paystation.web.simpleweb.HelloWorldContainer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
