@@ -31,4 +31,12 @@ public class PayStation {
 		totalMoneyInserted = 0;
 	}
 
+	public String saveState() {
+		return Integer.toHexString(totalMoneyInserted);
+	}
+
+	public void restore(String state) {
+		totalMoneyInserted = Integer.parseInt(state, 16);
+	}
+
 }

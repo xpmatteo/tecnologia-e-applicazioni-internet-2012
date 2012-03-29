@@ -52,4 +52,15 @@ public class PayStationTest {
 		station.cancel();
 		assertEquals(0, station.readDisplay());
 	}
+
+	@Test
+	public void returnState() throws Exception {
+		PayStation first = new PayStation();
+		first.addCoin(25);
+		assertEquals(10, first.readDisplay());
+		
+		PayStation second = new PayStation();
+		second.restore(first.saveState());
+		assertEquals(10, second.readDisplay());
+	}	
 }
