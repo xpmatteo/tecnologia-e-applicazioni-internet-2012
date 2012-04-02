@@ -1,7 +1,7 @@
 package it.uninsubria.paystation.domain;
 
 public class PayStation {
-	int totalMoneyInserted;
+	Integer totalMoneyInserted;
 	
 	public PayStation() {
 		totalMoneyInserted = 0;
@@ -32,11 +32,11 @@ public class PayStation {
 	}
 
 	public String saveState() {
-		return Integer.toHexString(totalMoneyInserted);
+		return Integer.toString(totalMoneyInserted, 2);
 	}
 
 	public void restore(String state) {
-		totalMoneyInserted = Integer.parseInt(state, 16);
+		totalMoneyInserted = Integer.parseInt(state, 2);
 	}
 
 }

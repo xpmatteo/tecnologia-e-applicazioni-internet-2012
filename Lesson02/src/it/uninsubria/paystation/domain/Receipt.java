@@ -10,4 +10,9 @@ public class Receipt {
 	public int minutes() {
 		return this.minutes;
 	}
+	
+	@Override
+	public String toString() {
+		return "Ticket per " + minutes + " minuti";
+	}
 }

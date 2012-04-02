@@ -34,6 +34,19 @@ public class PayStationTest {
 		assertEquals(6, station.readDisplay());
 	}
 	
+	@Test
+	public void canSaveAndRestoreState() throws Exception {
+		PayStation station = new PayStation();
+		station.addCoin(10);
+		station.addCoin(25);
+		assertEquals(14, station.readDisplay());
+		
+		String state = station.saveState();
+		PayStation newPayStation = new PayStation();
+		newPayStation.restore(state);
+		assertEquals(14, newPayStation.readDisplay());
+	}
+	
 	@Test(expected=IllegalCoinException.class)
 	public void rejectsInvalidCoin() throws Exception {
 		station.addCoin(11);
@@ -52,15 +65,4 @@ public class PayStationTest {
 		station.cancel();
 		assertEquals(0, station.readDisplay());
 	}
-
-	@Test
-	public void returnState() throws Exception {
-		PayStation first = new PayStation();
-		first.addCoin(25);
-		assertEquals(10, first.readDisplay());
-		
-		PayStation second = new PayStation();
-		second.restore(first.saveState());
-		assertEquals(10, second.readDisplay());
-	}	
 }
