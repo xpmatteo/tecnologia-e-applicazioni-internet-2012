@@ -1,10 +1,9 @@
 package it.uninsubria.paystation.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import it.uninsubria.paystation.domain.PayStation;
-import it.uninsubria.paystation.web.FakeWebRequest;
-import it.uninsubria.paystation.web.FakeWebResponse;
-import it.uninsubria.paystation.web.PayStationPage;
 
 import org.junit.Before;
 import org.junit.Test;

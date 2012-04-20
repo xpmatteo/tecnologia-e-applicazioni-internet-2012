@@ -1,6 +1,7 @@
 package it.uninsubria.paystation.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import it.uninsubria.paystation.domain.Receipt;
 import it.uninsubria.paystation.domain.ReceiptRepository;
 

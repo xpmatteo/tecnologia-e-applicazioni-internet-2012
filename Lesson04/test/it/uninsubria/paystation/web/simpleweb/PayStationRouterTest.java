@@ -1,14 +1,12 @@
 package it.uninsubria.paystation.web.simpleweb;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import it.uninsubria.paystation.domain.ReceiptRepository;
 import it.uninsubria.paystation.web.FakeWebRequest;
 import it.uninsubria.paystation.web.PayStationPage;
 import it.uninsubria.paystation.web.PurchaseListPage;
-import it.uninsubria.paystation.web.WebRequest;
 
 import org.junit.Test;
-import org.simpleframework.http.Request;
 
 public class PayStationRouterTest {
 

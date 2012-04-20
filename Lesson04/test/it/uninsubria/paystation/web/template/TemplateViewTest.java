@@ -1,10 +1,8 @@
 package it.uninsubria.paystation.web.template;
 
-import it.uninsubria.paystation.web.template.TemplateView;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 
 public class TemplateViewTest {

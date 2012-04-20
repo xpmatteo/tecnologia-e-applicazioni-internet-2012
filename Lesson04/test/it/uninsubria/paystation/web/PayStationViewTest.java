@@ -1,6 +1,6 @@
 package it.uninsubria.paystation.web;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import it.uninsubria.paystation.web.xml.XmlFragment;
 
 import org.junit.Test;

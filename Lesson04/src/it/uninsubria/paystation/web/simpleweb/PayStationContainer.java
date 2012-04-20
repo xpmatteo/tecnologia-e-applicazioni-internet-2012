@@ -1,12 +1,11 @@
 package it.uninsubria.paystation.web.simpleweb;
 
-import java.io.IOException;
-import java.io.PrintStream;
-
 import it.uninsubria.paystation.domain.ReceiptRepository;
-import it.uninsubria.paystation.web.PayStationPage;
 import it.uninsubria.paystation.web.WebRequest;
 import it.uninsubria.paystation.web.WebResponse;
+
+import java.io.IOException;
+import java.io.PrintStream;
 
 import org.simpleframework.http.Request;
 import org.simpleframework.http.Response;
