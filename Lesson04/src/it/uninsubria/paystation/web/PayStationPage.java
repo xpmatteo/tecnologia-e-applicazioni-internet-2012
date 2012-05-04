@@ -22,8 +22,8 @@ public class PayStationPage extends Page {
 		} else {
 			insertCoin(webRequest);
 			PayStationView view = new PayStationView();
-			view.set("minutes", payStation.readDisplay());
-			view.set("state", payStation.saveState());
+			view.setMinutes(payStation.readDisplay());
+			view.setState(payStation.saveState());
 			webResponse.setBody(view.toHtml());
 		}
 	}

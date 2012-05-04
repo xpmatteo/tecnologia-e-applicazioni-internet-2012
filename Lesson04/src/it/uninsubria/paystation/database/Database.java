@@ -74,5 +74,4 @@ public class Database {
 			} catch (Exception ignored) {}
 		}
 	}
-
 }

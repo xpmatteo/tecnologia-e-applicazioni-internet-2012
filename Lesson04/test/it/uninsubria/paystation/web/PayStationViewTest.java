@@ -10,23 +10,29 @@ public class PayStationViewTest {
 
 	@Test
 	public void displaysMinutes() {
-		view.set("minutes", "123");
-		assertTrue(view.toHtml().contains("Minuti acquistati: 123"));
+		view.setMinutes(456);
+		assertMatchesXPath("//p[text()='Minuti acquistati: 456']");
 	}
-	
+
 	@Test
-	public void containsParagraphWithMinutes() throws Exception {
-		view.set("minutes", "456");
-		XmlFragment html = new XmlFragment(view.toHtml());
-		assertTrue(html.matchesXPath("//p[text()='Minuti acquistati: 456']"));
+	public void savesHiddenState() {
+		view.setState("pippo");
+		assertMatchesXPath("//input[@type='hidden'][@name='state'][@value='pippo']");
 	}
-	
+
 	@Test
 	public void containsBuyButton() throws Exception {
 		/* verifica che esista un elemento input che ha come
 		 * etichetta "Acquista", come attributo name "buy",
 		 * e che sia contenuto all'interno di un elemento form 
 		 */
+		assertMatchesXPath("//input[@name='buy'][@value='Acquista']");
 	}
 
+	private void assertMatchesXPath(String xpath) {
+		String body = view.toHtml();
+		XmlFragment html = new XmlFragment(body);
+		String message = String.format("Expected \n%s\nnot found in \n%s", xpath, body);
+		assertTrue(message, html.matchesXPath(xpath));
+	}	
 }
