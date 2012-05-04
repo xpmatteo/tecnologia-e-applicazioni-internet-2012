@@ -1,16 +1,16 @@
 package it.uninsubria.paystation.web.simpleweb;
 
 import it.uninsubria.paystation.domain.PayStation;
-import it.uninsubria.paystation.domain.ReceiptRepository;
+import it.uninsubria.paystation.domain.InMemoryReceiptRepository;
 import it.uninsubria.paystation.web.PayStationPage;
 import it.uninsubria.paystation.web.PurchaseListPage;
 import it.uninsubria.paystation.web.WebRequest;
 
 public class PayStationRouter {
 
-	private ReceiptRepository repository;
+	private InMemoryReceiptRepository repository;
 	
-	public PayStationRouter(ReceiptRepository repository) {
+	public PayStationRouter(InMemoryReceiptRepository repository) {
 		this.repository = repository;
 	}
 

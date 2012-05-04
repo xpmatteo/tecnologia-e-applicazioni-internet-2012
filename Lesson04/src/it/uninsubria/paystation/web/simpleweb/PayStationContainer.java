@@ -1,6 +1,6 @@
 package it.uninsubria.paystation.web.simpleweb;
 
-import it.uninsubria.paystation.domain.ReceiptRepository;
+import it.uninsubria.paystation.domain.InMemoryReceiptRepository;
 import it.uninsubria.paystation.web.WebRequest;
 import it.uninsubria.paystation.web.WebResponse;
 
@@ -13,7 +13,7 @@ import org.simpleframework.http.core.Container;
 
 public class PayStationContainer implements Container {
 
-	private ReceiptRepository repository = new ReceiptRepository();
+	private InMemoryReceiptRepository repository = new InMemoryReceiptRepository();
 
 	@Override
 	public void handle(Request request, Response response) {

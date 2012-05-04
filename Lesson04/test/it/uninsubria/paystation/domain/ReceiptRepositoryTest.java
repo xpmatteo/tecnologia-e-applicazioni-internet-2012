@@ -2,10 +2,12 @@ package it.uninsubria.paystation.domain;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class ReceiptRepositoryTest {
-	ReceiptRepository repository = new ReceiptRepository();
+	InMemoryReceiptRepository repository = new InMemoryReceiptRepository();
 
 	@Test
 	public void isEmptyInitially() {
@@ -18,8 +20,9 @@ public class ReceiptRepositoryTest {
 		
 		repository.notifyPurchase(receipt);
 		
-		assertEquals(new Integer(1), repository.size());
-		assertEquals(receipt, repository.get(0));
+		List<Receipt> all = repository.findAll();
+		assertEquals(1, all.size());
+		assertEquals(receipt, all.get(0));
 	}
 	
 	@Test
@@ -30,8 +33,9 @@ public class ReceiptRepositoryTest {
 		repository.notifyPurchase(first);
 		repository.notifyPurchase(second);
 		
-		assertEquals(new Integer(2), repository.size());
-		assertEquals(first, repository.get(0));
-		assertEquals(second, repository.get(1));
+		List<Receipt> all = repository.findAll();
+		assertEquals(2, all.size());
+		assertEquals(first, all.get(0));
+		assertEquals(second, all.get(1));
 	}
 }

@@ -3,14 +3,14 @@ package it.uninsubria.paystation.web;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import it.uninsubria.paystation.domain.Receipt;
-import it.uninsubria.paystation.domain.ReceiptRepository;
+import it.uninsubria.paystation.domain.InMemoryReceiptRepository;
 
 import org.junit.Test;
 
 public class PurchaseListPageTest {
 	FakeWebRequest webRequest = new FakeWebRequest();
 	FakeWebResponse webResponse = new FakeWebResponse();
-	ReceiptRepository repository = new ReceiptRepository();
+	InMemoryReceiptRepository repository = new InMemoryReceiptRepository();
 	PurchaseListPage page = new PurchaseListPage(repository);
 
 	@Test

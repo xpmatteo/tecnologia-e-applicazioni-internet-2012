@@ -31,7 +31,7 @@ public class Database {
 				}
 			}
 			return result;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
 			close(resultSet);
@@ -44,7 +44,7 @@ public class Database {
 		try {
 			statement = prepareStatement(sql, params);
 			statement.execute();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
 			close(statement);
