@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class ReceiptRepositoryTest {
+public class InMemoryReceiptRepositoryTest {
 	InMemoryReceiptRepository repository = new InMemoryReceiptRepository();
 
 	@Test

@@ -31,10 +31,12 @@ public class DatabaseTest {
 	@Test
 	public void insertThenSelect() throws Exception {
 		database.execute("insert into prova (name) values (?)", "pippo");
+		database.execute("insert into prova (name) values (?)", "pluto");
 
 		ListOfRows rows = database.select("select * from prova");
-		assertEquals(1, rows.size());
+		assertEquals(2, rows.size());
 		assertEquals("pippo", rows.get(0).get("name"));
+		assertEquals("pluto", rows.get(1).get("name"));
 	}
 
 	private void drop_temp_table() {
