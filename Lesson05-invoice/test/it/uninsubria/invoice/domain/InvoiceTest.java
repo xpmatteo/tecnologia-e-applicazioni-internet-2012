@@ -34,7 +34,6 @@ public class InvoiceTest {
 		assertEquals(1210, invoice.getTotalWithVat());
 	}
 	
-	
 	@Test
 	public void returnsFormattedLineItems() throws Exception {
 		Invoice invoice = new Invoice();
@@ -44,5 +43,4 @@ public class InvoiceTest {
 		assertEquals("Prima voce: € 0,01", invoice.getLineItem(0).toString());
 		assertEquals("Seconda voce: € 5,67", invoice.getLineItem(1).toString());
 	}
-	
 }

@@ -1,13 +1,11 @@
 package it.uninsubria.invoice.web.simpleweb;
 
-import it.uninsubria.generic.database.Database;
 import it.uninsubria.generic.database.DatabaseConnector;
 import it.uninsubria.generic.web.Page;
 import it.uninsubria.generic.web.RealWebRequest;
 import it.uninsubria.generic.web.RealWebResponse;
 import it.uninsubria.generic.web.WebRequest;
 import it.uninsubria.generic.web.WebResponse;
-import it.uninsubria.invoice.database.DatabaseInvoiceRepository;
 import it.uninsubria.invoice.web.InvoicePage;
 
 import java.io.IOException;
@@ -19,11 +17,11 @@ import org.simpleframework.http.Request;
 import org.simpleframework.http.Response;
 import org.simpleframework.http.core.Container;
 
-public class PayStationContainer implements Container {
+public class InvoiceContainer implements Container {
 
 	@Override
 	public void handle(Request request, Response response) {
-		DatabaseConnector connector = new DatabaseConnector("pay_station", "pay_station", "jdbc:mysql://localhost/pay_station_development", "com.mysql.jdbc.Driver");
+		DatabaseConnector connector = new DatabaseConnector("zot", "zot", "jdbc:mysql://localhost/zot", "com.mysql.jdbc.Driver");
 		Connection connection = connector.getConnection();
 		try {
 			tryToHandle(connection, request, response);
@@ -36,9 +34,6 @@ public class PayStationContainer implements Container {
 	}
 
 	private void tryToHandle(Connection connection, Request request, Response response) throws SQLException {
-		Database database = new Database(connection);
-		DatabaseInvoiceRepository repository = new DatabaseInvoiceRepository(database);
-
 		WebRequest webRequest = new RealWebRequest(request);
 		WebResponse webResponse = new RealWebResponse(response);
 

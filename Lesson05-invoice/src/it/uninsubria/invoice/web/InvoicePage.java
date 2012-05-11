@@ -9,5 +9,6 @@ public class InvoicePage extends Page {
 
 	@Override
 	public void handle(WebRequest webRequest, WebResponse webResponse) {
+		webResponse.setBody("ciao");
 	}
 }

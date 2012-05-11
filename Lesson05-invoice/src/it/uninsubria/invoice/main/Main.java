@@ -1,7 +1,7 @@
 package it.uninsubria.invoice.main;
 
 import it.uninsubria.generic.web.StaticAssetContainer;
-import it.uninsubria.invoice.web.simpleweb.PayStationContainer;
+import it.uninsubria.invoice.web.simpleweb.InvoiceContainer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -13,7 +13,7 @@ import org.simpleframework.transport.connect.SocketConnection;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		PayStationContainer payStation = new PayStationContainer();
+		InvoiceContainer payStation = new InvoiceContainer();
 		StaticAssetContainer assets = new StaticAssetContainer(payStation);
 		Connection connection = new SocketConnection(assets);
 		SocketAddress address = new InetSocketAddress(8080);
