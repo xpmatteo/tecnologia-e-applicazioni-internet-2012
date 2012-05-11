@@ -1,11 +1,14 @@
 package it.uninsubria.paystation.web.simpleweb;
 
-import it.uninsubria.paystation.domain.InMemoryReceiptRepository;
+import it.uninsubria.paystation.database.Database;
+import it.uninsubria.paystation.database.DatabaseConnector;
+import it.uninsubria.paystation.database.DatabaseReceiptRepository;
 import it.uninsubria.paystation.web.WebRequest;
 import it.uninsubria.paystation.web.WebResponse;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.sql.Connection;
 
 import org.simpleframework.http.Request;
 import org.simpleframework.http.Response;
@@ -13,7 +16,11 @@ import org.simpleframework.http.core.Container;
 
 public class PayStationContainer implements Container {
 
-	private InMemoryReceiptRepository repository = new InMemoryReceiptRepository();
+	private DatabaseConnector connector 
+		= new DatabaseConnector("pay_station", "pay_station", "jdbc:mysql://localhost/pay_station_development", "com.mysql.jdbc.Driver");
+	private Connection connection = connector.getConnection();
+	private Database database = new Database(connection );
+	private DatabaseReceiptRepository repository = new DatabaseReceiptRepository(database);
 
 	@Override
 	public void handle(Request request, Response response) {

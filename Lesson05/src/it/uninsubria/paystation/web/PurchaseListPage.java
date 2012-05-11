@@ -1,14 +1,14 @@
 package it.uninsubria.paystation.web;
 
-import it.uninsubria.paystation.domain.InMemoryReceiptRepository;
 import it.uninsubria.paystation.domain.Receipt;
+import it.uninsubria.paystation.domain.ReceiptRepository;
 import it.uninsubria.paystation.web.simpleweb.Page;
 
 public class PurchaseListPage extends Page {
 
-	private final InMemoryReceiptRepository repository;
+	private final ReceiptRepository repository;
 
-	public PurchaseListPage(InMemoryReceiptRepository repository) {
+	public PurchaseListPage(ReceiptRepository repository) {
 		this.repository = repository;
 	}
 

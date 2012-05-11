@@ -26,7 +26,8 @@ public class DatabaseReceiptRepository implements ReceiptRepository {
 	public List<Receipt> findAll() {
 		List<Receipt> result = new ArrayList<Receipt>();
 		String sql = "select * from receipts";
-		for (Map<String, Object> row : database.select(sql)) {
+		ListOfRows rows = database.select(sql);
+		for (Map<String, Object> row : rows) {
 			int minutes = (Integer) row.get("minutes");
 			Receipt receipt = new Receipt(minutes);
 			result.add(receipt);
@@ -38,5 +39,10 @@ public class DatabaseReceiptRepository implements ReceiptRepository {
 	public void add(Receipt receipt) {
 		String sql = "insert into receipts (minutes) values (?)";
 		database.execute(sql, receipt.minutes());
+	}
+
+	@Override
+	public void notifyPurchase(Receipt receipt) {
+		add(receipt);
 	}
 }
