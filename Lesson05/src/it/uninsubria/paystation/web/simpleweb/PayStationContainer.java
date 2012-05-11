@@ -9,6 +9,7 @@ import it.uninsubria.paystation.web.WebResponse;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import org.simpleframework.http.Request;
 import org.simpleframework.http.Response;
@@ -16,23 +17,24 @@ import org.simpleframework.http.core.Container;
 
 public class PayStationContainer implements Container {
 
-	private DatabaseConnector connector 
-		= new DatabaseConnector("pay_station", "pay_station", "jdbc:mysql://localhost/pay_station_development", "com.mysql.jdbc.Driver");
-	private Connection connection = connector.getConnection();
-	private Database database = new Database(connection );
-	private DatabaseReceiptRepository repository = new DatabaseReceiptRepository(database);
-
 	@Override
 	public void handle(Request request, Response response) {
+		DatabaseConnector connector = new DatabaseConnector("pay_station", "pay_station", "jdbc:mysql://localhost/pay_station_development", "com.mysql.jdbc.Driver");
+		Connection connection = connector.getConnection();
 		try {
-			tryToHandle(request, response);
+			tryToHandle(connection, request, response);
 		} catch (Exception e) {
 			response.setCode(500);
 			printStackTrace(response, e);
+		} finally {
+			close(connection);
 		}
 	}
 
-	private void tryToHandle(Request request, Response response) {
+	private void tryToHandle(Connection connection, Request request, Response response) throws SQLException {
+		Database database = new Database(connection);
+		DatabaseReceiptRepository repository = new DatabaseReceiptRepository(database);
+
 		WebRequest webRequest = new RealWebRequest(request);
 		WebResponse webResponse = new RealWebResponse(response);
 		PayStationRouter router = new PayStationRouter(repository);
@@ -50,4 +52,12 @@ public class PayStationContainer implements Container {
 		} catch (IOException ignored) {
 		}
 	}
+
+	private void close(Connection connection) {
+		try {
+			if (null != connection)
+				connection.close();
+		} catch (SQLException ignored) {}
+	}
+
 }

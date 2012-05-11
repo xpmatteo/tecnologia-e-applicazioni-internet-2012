@@ -25,7 +25,6 @@ public class RealWebRequest implements WebRequest {
 
 	@Override
 	public String getPath() {
-		System.out.println(this.request.getPath().getPath());
 		return this.request.getPath().getPath();
 	}
 

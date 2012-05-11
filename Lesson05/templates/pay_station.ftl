@@ -1,5 +1,5 @@
-<div style="border:1px solid black; margin: 1em; padding: 1em; width: 20em">
-	<p style="border: 1px solid gray; padding: 0.2em">Minuti acquistati: ${minutes!0}</p>
+<div id="pay_station">
+	<p>Minuti acquistati: ${minutes!0}</p>
 	<form method='post'>
 		<input type="hidden" name="state" value="${state!""}" />
 		<input type="submit" name="coin05" value="5 &cent;" />

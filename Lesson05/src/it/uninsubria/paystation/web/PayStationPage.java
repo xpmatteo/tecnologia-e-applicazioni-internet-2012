@@ -21,11 +21,17 @@ public class PayStationPage extends Page {
 			webResponse.setBody(receipt.toString());
 		} else {
 			insertCoin(webRequest);
-			PayStationView view = new PayStationView();
-			view.setMinutes(payStation.readDisplay());
-			view.setState(payStation.saveState());
-			webResponse.setBody(view.toHtml());
+			PayStationView view = createView();
+			ApplicationLayout layout = new ApplicationLayout(view);
+			webResponse.setBody(layout.toHtml());
 		}
+	}
+
+	private PayStationView createView() {
+		PayStationView view = new PayStationView();
+		view.setMinutes(payStation.readDisplay());
+		view.setState(payStation.saveState());
+		return view;
 	}
 
 	private void restoreState(WebRequest webRequest) {
