@@ -1,9 +1,9 @@
-package it.uninsubria.paystation.web.xml;
+package it.uninsubria.generic.view;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
-import it.uninsubria.paystation.web.xml.XmlFragment.ElementNotFoundException;
+import it.uninsubria.generic.view.XmlFragment.ElementNotFoundException;
 
 import java.util.List;
 

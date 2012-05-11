@@ -1,7 +1,6 @@
-package it.uninsubria.paystation.web.template;
+package it.uninsubria.generic.view;
 
 import static org.junit.Assert.assertEquals;
-import it.uninsubria.generic.view.TemplateView;
 
 import org.junit.Test;
 

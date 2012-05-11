@@ -2,7 +2,7 @@
 
 # define key information
 src=sql
-name=pay_station
+name=invoices
 
 # no customization needed beyond this line
 dbname=${name}_development

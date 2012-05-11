@@ -1,4 +1,4 @@
-package it.uninsubria.paystation.web.xml;
+package it.uninsubria.generic.view;
 
 import static java.lang.String.format;
 

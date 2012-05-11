@@ -1,9 +1,6 @@
-package it.uninsubria.paystation.database;
+package it.uninsubria.generic.database;
 
 import static org.junit.Assert.assertEquals;
-
-import it.uninsubria.generic.database.Database;
-import it.uninsubria.generic.database.ListOfRows;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

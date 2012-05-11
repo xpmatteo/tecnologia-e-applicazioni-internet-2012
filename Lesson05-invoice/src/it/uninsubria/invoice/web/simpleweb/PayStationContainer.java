@@ -7,7 +7,8 @@ import it.uninsubria.generic.web.RealWebRequest;
 import it.uninsubria.generic.web.RealWebResponse;
 import it.uninsubria.generic.web.WebRequest;
 import it.uninsubria.generic.web.WebResponse;
-import it.uninsubria.invoice.database.DatabaseReceiptRepository;
+import it.uninsubria.invoice.database.DatabaseInvoiceRepository;
+import it.uninsubria.invoice.web.InvoicePage;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -36,12 +37,12 @@ public class PayStationContainer implements Container {
 
 	private void tryToHandle(Connection connection, Request request, Response response) throws SQLException {
 		Database database = new Database(connection);
-		DatabaseReceiptRepository repository = new DatabaseReceiptRepository(database);
+		DatabaseInvoiceRepository repository = new DatabaseInvoiceRepository(database);
 
 		WebRequest webRequest = new RealWebRequest(request);
 		WebResponse webResponse = new RealWebResponse(response);
-		PayStationRouter router = new PayStationRouter(repository);
-		Page page = router.getPageFor(webRequest);
+
+		Page page = new InvoicePage();
 		page.handle(webRequest, webResponse);
 	}
 

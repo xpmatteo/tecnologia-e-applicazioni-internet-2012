@@ -1,6 +1,4 @@
-package it.uninsubria.paystation.web;
-
-import it.uninsubria.generic.web.WebRequest;
+package it.uninsubria.generic.web;
 
 import java.util.HashMap;
 import java.util.Map;
