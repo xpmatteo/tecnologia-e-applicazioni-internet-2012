@@ -2,7 +2,8 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>invoice</title>
-    <script type="text/javascript" src="invoice.js"></script>
+    <script src="lib/jquery-1.7.2.min.js"></script>    
+    <script type="text/javascript" src="src/invoice.js"></script>
     <style type="text/css" media="screen">
       body {
         font-family: sans-serif;
@@ -25,31 +26,49 @@
   </head>
   <body>
     <h1>Fattura</h1>
-    <form action="#" method="get" >
+    <form id="addItem" action="#">
       <ul>
         <li>
           <label>
             Descrizione <br/>
-            <input type="text" name="description" value="" />
+            <input id="description" type="text" name="description" value="" />
           </label>
         </li>
         <li>
           <label>
             Importo <br/>
-            <input type="text" name="amount" value="" />
+            <input id="amount" type="text" name="amount" value="" />
           </label>
         </li>
       </ul>
       <br/>
       <input type='submit' value='Aggiungi'/>        
     </form>
-    <table class="invoice">
-      <tr><td>Voce 1</td><td style="text-align: right">&euro; 100,00</td></tr>
-      <tr><td>Voce 2</td><td style="text-align: right">&euro; 300,00</td></tr>
-      <tr><td>Voce 3</td><td style="text-align: right">&euro; 600,00</td></tr>
-      <tr><td>Imponibile</td><td style="text-align: right">&euro; 1000,00</td></tr>
-      <tr><td>IVA al 21&#x0025;</td><td style="text-align: right">&euro; 210,00</td></tr>
-      <tr><td><strong>Totale</strong></td><td style="text-align: right"><strong>&euro; 1210,00</strong></td></tr>
-    </table>    
+    <ul id="lineItems">
+      
+    </ul>
+    <p id="total"></p>
+    
+    <script type="text/javascript" charset="utf-8">
+      var invoice = new Invoice();
+      var form = document.getElementById("addItem");
+      form.onsubmit = function() {
+        var descriptionInput = document.getElementById("description");
+        var amountInput = document.getElementById("amount");
+        invoice.add(descriptionInput.value, amountInput.value);
+        var totalParagraph = document.getElementById("total");
+        totalParagraph.innerHTML = invoice.getTotal();
+        descriptionInput.value = "";
+        amountInput.value = "";
+        
+        var lineItemsList = document.getElementById("lineItems");
+        lineItemsList.innerHTML += "<li>" + 
+          invoice.getLineItem(invoice.getSize()-1).toString() +
+          "</li>";
+        
+        return false;
+      }
+    </script>
+    
   </body>
 </html>

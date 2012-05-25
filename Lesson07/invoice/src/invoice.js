@@ -1,22 +1,51 @@
+function truncate(n) {
+  return Math[n > 0 ? "floor" : "ceil"](n);
+}
+
+function LineItem(description, amountInCents) {
+	this.description = description;
+	this.amountInCents = amountInCents;
+}
+
+LineItem.prototype.zeroPadding2 = function(n) {
+	var nAsString = "" + n;
+	if (nAsString.length == 1) {
+		return "0" + nAsString;
+	}
+	return nAsString;
+}
+
+
+LineItem.prototype.toString = function() {
+	return this.description + 
+		": € " +
+		truncate(this.amountInCents / 100) +
+		"," +
+		this.zeroPadding2(this.amountInCents % 100)
+		;
+}
+
+
 
 function Invoice() {
-	
+	this.total = 0;
+	this.size = 0;
+	this.lineItems = [];
+}
+
+Invoice.prototype.getTotal = function() {
+	return this.total;
 }
 
 Invoice.prototype.add = function(description, amount) {
-	// ...
+	this.total += parseInt(amount);
+	this.lineItems[this.size++] = new LineItem(description, amount);
 }
 
+Invoice.prototype.getSize = function() {
+	return this.size;
+}
 
-// test
-var invoice = new Invoice();
-invoice.add("Latte", 1.50);
-invoice.add("Giornale", 1.50);
-invoice.add("Pane", 7.00);
-
-console.log("Totale: " + invoice.getTotal());
-console.log("Totale con IVA: " + invoice.getTotalWithVat());
-// Mi aspetto di leggere:
-// Totale: 10.0
-// Totale con IVA: 12.1
-
+Invoice.prototype.getLineItem = function(index) {
+	return this.lineItems[index];
+}
