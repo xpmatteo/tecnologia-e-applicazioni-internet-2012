@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>invoice</title>
+    <script type="text/javascript" src="invoice.js"></script>
+    <style type="text/css" media="screen">
+      body {
+        font-family: sans-serif;
+      }
+      table.invoice {
+        border: 1px solid black; 
+        width: 20em;
+      }
+      form ul {
+        margin-left: 0px;
+        padding-left: 0px;
+        padding-bottom: 1em;
+        list-style: none;         
+      }
+      form li {
+        display: block-inline;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fattura</h1>
+    <form action="#" method="get" >
+      <ul>
+        <li>
+          <label>
+            Descrizione <br/>
+            <input type="text" name="description" value="" />
+          </label>
+        </li>
+        <li>
+          <label>
+            Importo <br/>
+            <input type="text" name="amount" value="" />
+          </label>
+        </li>
+      </ul>
+      <br/>
+      <input type='submit' value='Aggiungi'/>        
+    </form>
+    <table class="invoice">
+      <tr><td>Voce 1</td><td style="text-align: right">&euro; 100,00</td></tr>
+      <tr><td>Voce 2</td><td style="text-align: right">&euro; 300,00</td></tr>
+      <tr><td>Voce 3</td><td style="text-align: right">&euro; 600,00</td></tr>
+      <tr><td>Imponibile</td><td style="text-align: right">&euro; 1000,00</td></tr>
+      <tr><td>IVA al 21&#x0025;</td><td style="text-align: right">&euro; 210,00</td></tr>
+      <tr><td><strong>Totale</strong></td><td style="text-align: right"><strong>&euro; 1210,00</strong></td></tr>
+    </table>    
+  </body>
+</html>
