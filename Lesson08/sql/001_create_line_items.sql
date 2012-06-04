@@ -1,8 +1,8 @@
 
-create table receipts (
+create table line_items (
 	id integer auto_increment,
-	minutes integer,
-	created_at datetime,
+	description varchar(255),
+	amount decimal,
 	primary key (id)
 );
 

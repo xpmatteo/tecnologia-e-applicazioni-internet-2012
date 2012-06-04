@@ -1,10 +1,13 @@
 package it.uninsubria.invoice.database;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import it.uninsubria.generic.database.Database;
 import it.uninsubria.generic.database.DatabaseConnector;
 import it.uninsubria.invoice.database.DatabaseInvoiceRepository;
 import it.uninsubria.invoice.domain.InvoiceRepository;
+import it.uninsubria.invoice.domain.LineItem;
+import it.uninsubria.invoice.domain.Money;
 
 import java.sql.Connection;
 
@@ -26,12 +29,25 @@ public class DatabaseInvoiceRepositoryTest {
 
 	@Before
 	public void setUp() {
-		database.execute("delete from receipts");
+		database.execute("delete from line_items");
 	}
 	
-	@Test@Ignore
+	@Test
 	public void isEmptyInitially() {
-		assertEquals(new Integer(0), repository.size());
+		assertEquals(0, repository.size());
 	}
+	
+	@Test
+	public void addOneLineItem() throws Exception {
+		LineItem original = new LineItem("desc", new Money(12345));
+		
+		repository.addLineItem(original);
+		
+		assertEquals(1, repository.size());
+		LineItem found = repository.all().get(0);
+		assertEquals(original, found);
+	}
+	
+	
 	
 }

@@ -30,4 +30,9 @@ public class RealWebResponse implements WebResponse {
 		response.set("Content-Type", type);
 	}
 
+	@Override
+	public void setStatus(int status) {
+		response.setCode(status);
+	}
+
 }

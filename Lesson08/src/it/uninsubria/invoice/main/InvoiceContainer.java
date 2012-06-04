@@ -1,11 +1,14 @@
 package it.uninsubria.invoice.main;
 
+import it.uninsubria.generic.database.Database;
 import it.uninsubria.generic.database.DatabaseConnector;
 import it.uninsubria.generic.web.Page;
 import it.uninsubria.generic.web.RealWebRequest;
 import it.uninsubria.generic.web.RealWebResponse;
 import it.uninsubria.generic.web.WebRequest;
 import it.uninsubria.generic.web.WebResponse;
+import it.uninsubria.invoice.database.DatabaseInvoiceRepository;
+import it.uninsubria.invoice.domain.InvoiceRepository;
 import it.uninsubria.invoice.web.InvoicePage;
 
 import java.io.IOException;
@@ -37,8 +40,8 @@ public class InvoiceContainer implements Container {
 	private void tryToHandle(Connection connection, Request request, Response response) throws SQLException {
 		WebRequest webRequest = new RealWebRequest(request);
 		WebResponse webResponse = new RealWebResponse(response);
-
-		Page page = new InvoicePage();
+		InvoiceRepository repository = new DatabaseInvoiceRepository(new Database(connection));
+		Page page = new InvoicePage(repository);
 		page.handle(webRequest, webResponse);
 	}
 

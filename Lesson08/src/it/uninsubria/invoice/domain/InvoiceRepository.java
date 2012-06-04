@@ -1,8 +1,10 @@
 package it.uninsubria.invoice.domain;
 
+import java.util.List;
+
 
 public interface InvoiceRepository {
-	Invoice findById(int id);
-	void add(Invoice receipt);
-	Integer size();
+	void addLineItem(LineItem item);
+	long size();
+	List<LineItem> all();
 }

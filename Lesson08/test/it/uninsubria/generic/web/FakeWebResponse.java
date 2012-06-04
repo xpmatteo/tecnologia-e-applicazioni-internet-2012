@@ -6,10 +6,16 @@ public class FakeWebResponse implements WebResponse {
 
 	private String body;
 	private String contentType;
+	private Integer status;
 
 	@Override
 	public void setBody(String body) {
 		this.body = body;
+	}
+	
+	@Override
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	@Override
@@ -23,6 +29,10 @@ public class FakeWebResponse implements WebResponse {
 
 	public String getContentType() {
 		return contentType;
+	}
+
+	public int getStatus() {
+		return status;
 	}
 
 }

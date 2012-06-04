@@ -27,4 +27,9 @@ public class RealWebRequest implements WebRequest {
 		return this.request.getPath().getPath();
 	}
 
+	@Override
+	public HttpMethod getMethod() {
+		return HttpMethod.valueOf(request.getMethod().toUpperCase());
+	}
+
 }
