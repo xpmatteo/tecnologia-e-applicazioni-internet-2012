@@ -2,7 +2,34 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title>index</title>
-    
+    <script type="text/javascript" src="/lib/jquery-1.7.2.min.js"></script>
+    <script>
+      function invoiceHtml(data) {
+        var i;
+        var result = "<ul>";
+        for(i=0; i<data.length; i++) {
+          var lineItem = data[i];
+          result += "<li>" + lineItem.description + " " + lineItem.amountInCents + "</li>";
+        }
+        result += "</ul>";
+        return result;
+      }
+      function loadInvoice() {
+        $.ajax({
+          url: '/line-items',
+          success: function(data) {
+            $("#invoice").html(invoiceHtml(data));
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            $("#invoice").text("Error: " + textStatus + "; errorThrown " + errorThrown);
+          },
+        });
+      }
+      
+      $(document).ready(function() {
+        loadInvoice();
+      });
+    </script>
   </head>
   <body>
 
