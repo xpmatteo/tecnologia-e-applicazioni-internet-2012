@@ -24,7 +24,7 @@ public class LineItem {
 	}
 	
 	public String toJson() {
-		String template = "{ description: '%s', amountInCents: %d, }";
+		String template = "{ \"description\": \"%s\", \"amountInCents\": %d }";
 		return String.format(template, description, amount.toCents());
 	}
 

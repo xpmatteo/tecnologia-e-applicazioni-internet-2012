@@ -28,14 +28,17 @@ public class InvoicePage extends Page {
 	}
 
 	private void returnAllLineItems(WebResponse response) {
-		String body = "{\n";
+		String body = "";
 		for (LineItem item : repository.all()) {
+			if (!body.isEmpty()) {
+				body += ",";
+			}
 			body += "  " + item.toJson() + "\n";
 		}
-		body += "}";
-		response.setBody(body);
+		body = "[\n" + body + "\n]";
 		response.setContentType("application/json");
 		response.setStatus(200);
+		response.setBody(body);
 	}
 
 	private void addLineItem(WebRequest request, WebResponse response) {

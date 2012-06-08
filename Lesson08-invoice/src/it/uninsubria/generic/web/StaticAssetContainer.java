@@ -24,7 +24,8 @@ public class StaticAssetContainer implements Container {
 		contentTypes.put("png", "image/png");
 		contentTypes.put("txt", "text/plain");
 		contentTypes.put("html", "text/html");
-		
+		contentTypes.put("js", "application/javascript");
+
 		this.nextContainer = nextContainer;
 	}
 
