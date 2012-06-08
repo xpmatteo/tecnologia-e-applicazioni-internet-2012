@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Ajax Lab</title>
+    <script type="text/javascript" src="/lib/jquery-1.7.2.min.js"></script>
+    <script>
+    
+    function successCallback(data, textStatus) {
+      $("#display").text("data: " + data + "; textStatus: " + textStatus);
+      $("img.spinner").hide();
+    };
+    
+    function errorCallback(jqXHR, textStatus, errorThrown) {
+      $("#display").text("status: " + textStatus + "; error: " + errorThrown);
+      $("img.spinner").hide();
+    };    
+    
+    function ajaxPlainText() {
+      $("#spinnerPlainText").show();
+      $.ajax({
+        url: "/ajax/plainText",
+        success: successCallback,
+      });
+    }
+    
+    function ajax500() {
+      $("#500 img").show();
+      $.ajax({
+        url: "/ajax/500",
+        success: successCallback,
+        error: errorCallback,
+      });
+    }
+    
+    function ajaxSleepForever() {
+      $("#sleepForever img").show();
+      $.ajax({        
+        url: "/ajax/sleepForever",
+        success: successCallback,
+        error: errorCallback,        
+        timeout: 3000,
+      });
+    }
+    
+    $(document).ready(function() {
+      $("#plainText").click(ajaxPlainText);
+      $("#500 button").click(ajax500);
+      $("#sleepForever button").click(ajaxSleepForever);
+    });
+    </script>
+  </head>
+  <body>
+    <p id="display">Boh?</p>
+
+    <div>
+      <button id="plainText">Plain Text</button>
+      <img class="spinner" id="spinnerPlainText" src="/images/spinner.gif" style="display:none;"/>
+    </div>
+
+    <div>
+      <button id="json">JSON</button>
+    </div>
+
+    <div  id="sleepForever">
+      <button>Timeout</button>
+      <img class="spinner" src="/images/spinner.gif" style="display:none;"/>
+    </div>
+    
+    <div id="500">
+      <button>500</button>
+      <img class="spinner" src="/images/spinner.gif" style="display:none;"/>
+    </div>
+    
+    <div>
+      <button id="javascript">JavaScript</button>
+    </div>
+        
+    <div>
+      <button id="html">HTML</button>
+    </div>
+        
+  </body>
+</html>
