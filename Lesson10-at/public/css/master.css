@@ -1,0 +1,13 @@
+ body {
+   font-family: sans-serif;
+ }
+ div#pay_station {
+   border:1px solid black; 
+   margin: 1em; 
+   padding: 1em; 
+   width: 20em;
+ }
+ div#pay_station p {
+   border: 1px solid gray; 
+   padding: 0.2em;
+ }
