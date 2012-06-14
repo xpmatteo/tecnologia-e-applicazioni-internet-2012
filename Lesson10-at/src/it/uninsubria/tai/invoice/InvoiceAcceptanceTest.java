@@ -24,7 +24,7 @@ public class InvoiceAcceptanceTest {
 				.exec(new String[] {
 					"/bin/bash",
 					"-c",
-					"echo 'delete from line_items' | /usr/local/bin/mysql -uroot invoices_development"
+					"echo 'delete from line_items' | /usr/local/bin/mysql -uinvoices -pinvoices invoices_development"
 				});
 		int result = exec.waitFor();
 		Assert.assertEquals(0, result);
