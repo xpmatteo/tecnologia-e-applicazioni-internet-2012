@@ -13,7 +13,7 @@ public class TempConvPage {
 	private static final String BASE_URL = "http://localhost:8080/c2f";
 	private HtmlPage page;
 
-	public TempConvPage(HtmlPage page) {
+	private TempConvPage(HtmlPage page) {
 		this.page = page;
 	}
 
