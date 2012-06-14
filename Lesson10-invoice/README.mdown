@@ -1,0 +1,4 @@
+
+Questa è l'applicazione che verrà testato dal test di accettazione che si trova
+nel progetto Lezione10-at.  Vedi in quel progetto il README
+

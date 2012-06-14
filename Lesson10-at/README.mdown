@@ -1,0 +1,39 @@
+Esercizio:
+
+0. Far passare il test "addLineItems". Potrebbe essere necessario modificare il
+comando che cancella la tabella line_items; in molte installazioni mysql si
+trova in /usr/bin/mysql e non in /usr/local/bin/mysql
+
+
+1. Riscrivere il test in modo che prenda questa forma:
+
+      @Test
+    	public void addLineItems() throws Exception {
+    		addLineItem("nuova descrizione", "123");
+    		addLineItem("un'altra descrizione", "234");
+    		assertTrue("amount missing", page.asText().contains("€ 1,23"));
+    		assertTrue("descr missing", page.asText().contains("nuova descrizione"));
+    		assertEquals("€ 3,57", getPageTotal());
+    	}
+
+   Sarà necessario far diventare la variabile "page" un campo della classe
+   (control-1, segli "Convert local variable to field")
+   
+2. Ancora più preciso, ancora più espressivo:
+
+    @Test
+    public void addLineItemsPiuPreciso() throws Exception {
+    	assertEquals(0, lineItemsOnPage().size());
+
+    	addLineItem("nuova descrizione", "123");
+    	addLineItem("un'altra descrizione", "234");
+
+    	assertEquals(2, lineItemsOnPage().size());
+    	assertEquals("€ 1,23", lineItemsOnPage().get(0).getAmount());
+    	assertEquals("nuova descrizione", lineItemsOnPage().get(0).getDescription());
+
+    	assertEquals("€ 3,57", getPageTotal());
+    }
+
+3. Se si vuole fare un esercizio addizionale, scrivere un'applicazione di
+conversione della temperatura per fare passare il test case della temperatura.
