@@ -1,0 +1,129 @@
+
+body, td {
+  font-family: trebuchet MS, Bitstream Vera Sans, sans-serif; 
+  font-size: 10pt;
+  color: black;
+  background: white;
+  width: 48em;
+  margin-left: 8em;
+}
+
+div.maincontent {
+  width: 48em;
+}
+
+h1, h2 {
+  font-family: palatino, times, serif;
+  border-bottom: 2px solid green;
+  font-weight: normal;
+  text-align: right;
+  color: #006;
+  margin-bottom: 2px; 
+}
+
+h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #000066;
+}
+
+h1 {
+  font-size: 300%;
+}
+
+h2 {
+  font-size: 200%;
+}
+
+h3 {
+  font-size: 110%;
+}
+
+h4 {
+  font-size: 100%;
+}
+
+
+img {
+    border: 0;
+}
+
+address img {
+  float: right;
+  margin-bottom: 1em;
+  margin-left: 2px;
+  margin-right: 2px;
+  border: 0px;
+}
+
+address {
+  padding-top: .5em;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-bottom: .5em;
+  margin-top:  3em;
+  border-top: 2px solid green;
+  background-color: #eee;
+  clear: both;
+}
+
+pre {
+  margin-left: 2em;
+}
+
+.small {
+  font-size: 75%;
+}
+
+.important {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.notopmargin {
+  margin-top: 0pt;
+}
+
+.attrib, .quote cite {
+ display: block;
+ text-align: right;
+ font-style: italic;
+}
+
+.ahem {
+ border: 3px dashed gray;
+ padding: 1em;
+}
+
+.strikeout {
+  text-decoration: line-through;
+}
+
+.random-quote-link {
+	font-size: 9pt;
+	text-align: right;
+}
+
+.quote {
+  width: 60%;
+	margin: 5em 20% ;
+}
+
+body.title-page {
+  width: 64em;
+}
+#main-col {
+  width: 40em;
+}
+#right-col {
+  width: 20em;
+  padding-left: 4em;
+}
+
+div.post {
+	margin-bottom: 3em;
+}
+
+.flash {
+	background-color: orange;
+}

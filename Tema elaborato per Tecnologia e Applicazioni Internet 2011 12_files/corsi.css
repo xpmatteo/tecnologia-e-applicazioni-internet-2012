@@ -1,0 +1,35 @@
+div#navigation ul {
+ list-style-type: none;
+}
+
+body {
+  width: 55em;
+}
+
+#navigation {
+	float: left;
+	padding: .5em;
+	margin: 1em;
+	text-align: right; 
+	width: 12em; 
+	}
+
+#content {
+	float: left;
+	padding: .5em;
+	margin: 1em 0 0 1em;
+	width: 38em; 
+	}
+
+#navigation ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+#navigation li {
+  margin-bottom: .3em;
+}
+
+#annunci {
+  margin-top: 0px;
+}
