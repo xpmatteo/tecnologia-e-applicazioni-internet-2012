@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>publish-subscribe</title>
+    <script src="lib/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  
+  <body>
+    <h1 id="display">???</h1>
+    <h2 id="display2">!!!</h2>
+    
+    <p id="bar" style="background-color: pink; width: 0">&nbsp;</p>
+
+    <p id="bar2" style="background-color: gray; width: 0">&nbsp;</p>
+    
+    <button id="up">Up</button>
+    <button id="down">Down</button>
+    
+    <script type="text/javascript" charset="utf-8">
+      function Counter() {
+        this.value = 0;
+        this.listeners = [];
+      }
+      
+      Counter.prototype.increment = function() {
+        this.value++;
+        this.notifyListeners("increment");
+      }
+
+      Counter.prototype.decrement = function() {
+        this.value--;
+        this.notifyListeners("decrement");
+      }
+      
+      Counter.prototype.displayValue = function() {
+        return "" + this.value;
+      }
+      
+      Counter.prototype.addListener = function(listener) {
+        this.listeners.push(listener);
+      }
+      
+      Counter.prototype.notifyListeners = function(eventType) {
+        for (var i=0; i<this.listeners.length; i++) {
+          this.listeners[i](eventType);
+        }
+      }
+
+      function ProgressBar(element) {
+        this.element = element;
+      }
+      
+      ProgressBar.prototype.update = function(value) {
+        $(this.element).css("width", "" + value + "em");                
+      }
+      
+      var counter = new Counter();
+      var counter2 = new Counter();
+      
+      $(document).ready(function() {
+        $("#up").click(function() {
+          counter.increment();
+        });
+        $("#down").click(function() {
+          counter.decrement();
+        });
+        counter.addListener(function() {
+          $("#display").text(counter.displayValue());
+        });
+        counter.addListener(function() {
+          new ProgressBar("#bar").update(counter.displayValue());
+        });
+        counter.addListener(function() {
+          new ProgressBar("#bar2").update(counter2.displayValue());
+        });
+        counter2.addListener(function() {
+          $("#display2").text(counter2.displayValue());
+        });
+        counter.addListener(function(eventType) {
+          if ("increment" == eventType) {
+            counter2.increment();
+            counter2.increment();
+          } else {
+            counter2.decrement();
+            counter2.decrement();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
